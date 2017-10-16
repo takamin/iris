@@ -2,7 +2,7 @@ Classify iris by linear regression with octave
 ==============================================
 
 This is my personal repository to learn the machine-learning, linear regression and octave.
-So, I do not guarantee that the program work correctly.
+So, I do not guarantee that the program works correctly.
 
 
 ```console
