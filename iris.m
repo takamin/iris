@@ -6,14 +6,12 @@
 clear
 
 D = csvread('iris.csv');        # Load iris.csv
-#D = [(D(:, 1:4) .* D(:, 1:4)) D(:,5) ];
-#D = [D(:, 1:4) (D(:, 1:4) .* D(:, 1:4)) D(:,5) ];
-#D = D(randperm(size(D,1)),:);   # Sort random
+# D = D(randperm(size(D,1)),:); # Sort random
 
 #
 # Select training dataset
 #
-Dt = D(1:150, :);
+Dt = D(1:size(D, 1), :);    # Dt = D(1:2*size(D, 1)/3, :);
 Xt = Dt(:, 1:(size(Dt,2)-1));    # Input
 Xt = [ones(size(Xt,1),1) Xt];
 Yt = Dt(:, size(Dt,2));      # Result
@@ -21,7 +19,7 @@ Yt = Dt(:, size(Dt,2));      # Result
 #
 # Select validation dataset
 #
-Dv = D(1:150, :);
+Dv = D(1:size(D, 1), :);    # Dv = D(2*size(D, 1)/3+1:size(D,1), :);
 Xv = Dv(:, 1:(size(Dv,2)-1));
 Xv = [ones(size(Xv,1),1) Xv];
 Yv = Dv(:, size(Dv,2));
