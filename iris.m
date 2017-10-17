@@ -40,11 +40,11 @@ update = [1, numOfParam];
 for n = 1:iteration
     diff = Xt * theta' - Yt;
     for j = 1:numOfParam
-        update(1,j) = sum(diff .* Xt(:,j));
+        update(1,j) = diff' * Xt(:,j);
     endfor
     theta = theta - learning_rate * update / training_data_count;
     if mod(n,report_interval) == 0
-        cost = sum(diff .* diff) / ( 2 * size(Xt,1) )
+        cost = (diff' * diff) / ( 2 * size(Xt,1) )
     endif
 endfor
 
@@ -65,5 +65,5 @@ for i = 1:size(diff,1)
 endfor
 theta
 validationErrorRate = error_count / size(Xv, 1)
-validationTotalCost = sum(diff .* diff) / ( 2 * size(Xv,1) )
+validationTotalCost = diff' * diff / ( 2 * size(Xv,1) )
 
