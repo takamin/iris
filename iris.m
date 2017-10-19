@@ -27,8 +27,8 @@ Xv = [ones(size(Xv,1),1) Xv];
 Yv = Dv(:, size(Dv,2));
 
 training_data_count = size(Xt,1);
-learning_rate = 0.00001     # learning rate
-iteration = 5000000
+learning_rate = 0.01     # learning rate
+iteration = 10000
 report_interval = round(iteration / 10);
 
 #
