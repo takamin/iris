@@ -53,15 +53,19 @@ y = Xv * theta';
 diff = y - Yv;
 #validationResult = [Yv round(y)]
 
-error_count = 0;
+error_data = [];
+
 for i = 1:size(diff,1)
     diffI = diff(i,1);
     if(diffI * diffI >= 0.5 * 0.5)
         error_index = i
-        error_count = error_count + 1;
+        if(size(error_data, 1) == 0)
+            error_data = D(i,:);
+        else
+            error_data = [ error_data; D(i,:) ];
+        endif
     endif
 endfor
 theta
-validationErrorRate = error_count / size(Xv, 1)
+validationErrorRate = size(error_data,1) / size(Xv, 1)
 validationTotalCost = diff' * diff / ( 2 * size(Xv,1) )
-
